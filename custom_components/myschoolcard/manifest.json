@@ -1,0 +1,10 @@
+{
+    "domain": "myschoolcard",
+    "name": "My school card",
+    "documentation": "https://github.com/Alangasar/myschoolcard",
+    "dependencies": [],
+    "codeowners": [],
+    "config_flow": true,
+    "requirements": [],
+    "version": "0.0.1"
+}

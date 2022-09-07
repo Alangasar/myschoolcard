@@ -1,0 +1,18 @@
+{
+  "config": {
+    "error": {
+      "exists": "This account is already configured",
+      "template": "{error}"
+    },
+    "step": {
+      "user": {
+        "title": "Myschoolcard",
+        "description": "Enter your [myschoolcard.ru](https://www.myschoolcard.ru) credentials",
+        "data": {
+          "username": "Phone",
+          "password": "Password"
+        }
+      }
+    }
+  }
+}
