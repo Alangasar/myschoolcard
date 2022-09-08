@@ -3,7 +3,7 @@ DN = "https://www.myschoolcard.ru/"
 NAME = "My school card"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
-ISSUE_URL = "https://github.com/alangsar/ha_myschoolcard/issues"
+ISSUE_URL = "https://github.com/alangsar/myschoolcard/issues"
 
 # Platforms
 SENSOR = "sensor"

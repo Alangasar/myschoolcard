@@ -1,7 +1,7 @@
 {
     "domain": "myschoolcard",
     "name": "My school card",
-    "documentation": "https://github.com/Alangasar/ha_myschoolcard",
+    "documentation": "https://github.com/Alangasar/myschoolcard",
     "dependencies": [],
     "codeowners": [],
     "config_flow": true,
