@@ -51,7 +51,7 @@ class MySchoolCard:
             for clientlist in response["clientlist"]:
                 self.cards.append(clientlist["id"])
                 self.info[clientlist["id"]] = {}
-                self.info[clientlist["id"]]["line_name"] = clientlist["fname"]
+                self.info[clientlist["id"]]["line_name"] = clientlist["nick"]
                 self.info[clientlist["id"]]["balance"] = clientlist["nicebalance"]
                 self.info[clientlist["id"]]["docnumber"] = clientlist["docnumber"]
                 self.info[clientlist["id"]]["yearpayment"] = clientlist["yearpayment"]
