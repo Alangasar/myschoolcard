@@ -67,7 +67,7 @@ class MySchoolCardSensor(Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return f"{self.line_name} Card"
+        return f"MySchoolCard {self.line_name} Card"\
 
     @property
     def state(self):
@@ -130,10 +130,3 @@ class MySchoolCardSensor(Entity):
         updated = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
 
         return updated
-
-    def isFloat(num):
-        try:
-            float(num)
-            return True
-        except ValueError:
-            return False
