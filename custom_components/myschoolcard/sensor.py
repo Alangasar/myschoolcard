@@ -67,7 +67,7 @@ class MySchoolCardSensor(Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return f"MySchoolCard {self.line_name} Card"\
+        return f"MySchoolCard {self.line_name} Card"
 
     @property
     def state(self):
