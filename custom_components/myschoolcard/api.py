@@ -23,7 +23,8 @@ class MySchoolCard:
     def login(self):
         login_url = DN + "school/api/login"
         auth_data = {"phone": self.phone_number, "password": self.password}
-        r = requests.post(
+        session = requests.Session()
+        r = session.post(
             login_url,
             data=auth_data,
             headers={
@@ -34,37 +35,29 @@ class MySchoolCard:
             response = r.json()
             self.id = response["parent"]["id"]
             self.uid = response["parent"]["uid"]
-            self.get_cards_info()
+            r = session.post(
+                DN + "school/api-loginparent?puid=" + str(self.uid),
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"
+                },
+                )
+            response = r.json()
+            if r.status_code == 200:
+                for clientlist in response["clientlist"]:
+                    self.cards.append(clientlist["id"])
+                    self.info[clientlist["id"]] = {}
+                    self.info[clientlist["id"]]["line_name"] = clientlist["nick"]
+                    self.info[clientlist["id"]]["balance"] = float(
+                        clientlist["nicebalance"].replace(" ", "")
+                    )
+                    self.info[clientlist["id"]]["docnumber"] = clientlist["docnumber"]
+                    self.info[clientlist["id"]]["yearpayment"] = clientlist["yearpayment"]
+                    self.info[clientlist["id"]]["tctarif"] = clientlist["tctarif"]
             return True
         else:
+            _LOGGER.error(r)
             return False
-
-    def get_cards_info(self):
-        r = requests.get(
-            DN + "school/api-loginparent?puid=" + str(self.uid),
-            headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"
-            },
-        )
-        response = r.json()
-        if r.status_code == 200:
-            for clientlist in response["clientlist"]:
-                self.cards.append(clientlist["id"])
-                self.info[clientlist["id"]] = {}
-                self.info[clientlist["id"]]["line_name"] = clientlist["nick"]
-                self.info[clientlist["id"]]["balance"] = float(
-                    clientlist["nicebalance"].replace(" ", "")
-                )
-                self.info[clientlist["id"]]["docnumber"] = clientlist["docnumber"]
-                self.info[clientlist["id"]]["yearpayment"] = clientlist["yearpayment"]
-                self.info[clientlist["id"]]["tctarif"] = clientlist["tctarif"]
 
     def get_all_data(self):
         self.login()
-        self.get_cards_info()
         return self.info
-
-    def cards_list(self):
-        self.login()
-        self.get_cards_info()
-        return self.info.keys()

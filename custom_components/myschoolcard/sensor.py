@@ -1,8 +1,6 @@
 """Sensor platform for MySchoolCard."""
 import datetime
 import logging
-import numbers
-import uuid
 from datetime import timedelta
 
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
@@ -17,7 +15,6 @@ from .const import (
 
 _LOGGER = logging.getLogger(__name__)
 
-
 async def async_setup_entry(hass, entry, async_add_entities):
     """Setup sensor platform."""
     config = {
@@ -27,7 +24,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
     sensors = []
     msc = MySchoolCard(config.get(CONF_USERNAME), config.get(CONF_PASSWORD))
-    cards = await hass.async_add_executor_job(msc.cards_list)
+    cards = await hass.async_add_executor_job(msc.get_all_data)
     for card in cards:
         sensors.append(MySchoolCardSensor(hass, config, msc, card))
 
