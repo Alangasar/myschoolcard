@@ -38,7 +38,6 @@ async def async_setup_entry(hass, config_entry):
         VERSION,
         ISSUE_URL,
     )
-    config_entry.options = config_entry.data
     config_entry.add_update_listener(update_listener)
     hass.async_create_task(
         hass.config_entries.async_forward_entry_setup(config_entry, "sensor")
