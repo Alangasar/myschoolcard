@@ -1,10 +1,9 @@
 {
     "domain": "myschoolcard",
     "name": "My School Card",
-    "documentation": "https://github.com/Alangasar/myschoolcard",
-    "dependencies": [],
     "codeowners": ["@Alangasar"],
     "config_flow": true,
+    "documentation": "https://github.com/Alangasar/myschoolcard",
     "iot_class": "cloud_polling",
     "issue_tracker": "https://github.com/Alangasar/myschoolcard/issues",
     "requirements": [],
