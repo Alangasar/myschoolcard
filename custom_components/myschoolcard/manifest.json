@@ -5,6 +5,7 @@
     "dependencies": [],
     "codeowners": ["@Alangasar"],
     "config_flow": true,
+    "iot_class": "cloud_polling",
     "issue_tracker": "https://github.com/Alangasar/myschoolcard/issues",
     "requirements": [],
     "version": "1.0.4"
